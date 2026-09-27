@@ -2,7 +2,7 @@
 
 ## 定位与接口
 
-V2+ 使用 V1/V2 的自然模块作为候选基础。输入为 `GraphModel`、自然计算模块、核心数和硬件配置；输出为合法 Task 分区及一次确定性的多核计划。实现见 `src/aggregate_v2plus.py`，三路线调用入口见 `scripts/run_all_problems.py`。核心策略仍是先定 Task，再调用 `make_plan` 分核。
+V2plus 使用共享的自然模块生成器作为候选基础。输入为 `GraphModel`、自然计算模块、核心数和硬件配置；输出为合法 Task 分区及一次确定性的多核计划。实现见 `src/algorithms/v2plus/algorithm.py`，三路线调用入口见 `scripts/run_all_problems.py`。核心策略仍是先定 Task，再调用 `make_plan` 分核。
 
 ## 规则
 

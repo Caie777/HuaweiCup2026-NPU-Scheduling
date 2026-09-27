@@ -2,7 +2,7 @@
 
 ## 定位与接口
 
-RAMP+ 以 `RAMPDAG` 为基础，实现在 `src/ramp_plus.py`。输入为计算 DAG、核心数、DDR 带宽、Task 等待和 L1/UB 容量；输出为多个合法候选 Task 分区与分核计划。初始排程后可依据用户本地评估器产生的时间线生成 split/merge/move/reorder 邻域。
+RAMP+ 以 `RAMPDAG` 为基础，实现在 `src/algorithms/rampplus/algorithm.py`。输入为计算 DAG、核心数、DDR 带宽、Task 等待和 L1/UB 容量；输出为多个合法候选 Task 分区与分核计划。初始排程后可依据用户本地评估器产生的时间线生成 split/merge/move/reorder 邻域。
 
 ## 候选产生与排序
 

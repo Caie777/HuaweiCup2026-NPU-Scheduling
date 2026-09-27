@@ -24,14 +24,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from evaluation_adapter import (atomic_json, evaluate_official, plan_digest,
+from common.evaluation import (atomic_json, evaluate_official, plan_digest,
                                 replace_with_retry)
-from feedback_stages import run_feedback_stages
-from graph_model import GraphModel
-from multi_problem_candidates import (feedback_candidates, ramp_block_candidates,
-                                      route_candidates, safe_initial_plan)
-from official_input import resolve_official_root
-from scene_cost import score_plan
+from common.feedback import run_feedback_stages
+from common.graph import GraphModel
+from algorithms.routes import feedback_candidates, route_candidates
+from common.candidates import safe_initial_plan
+from algorithms.rampplus.candidates import ramp_block_candidates
+from common.official_input import resolve_official_root
+from common.scene_cost import score_plan
 
 OFFICIAL = DATA = CODE = None
 
@@ -636,7 +637,7 @@ def write_global(args, manifest, checkpoint):
 
 def git_version():
     digest = hashlib.sha256()
-    sources = (sorted((ROOT / "src").glob("*.py")) +
+    sources = (sorted((ROOT / "src").rglob("*.py")) +
                sorted(CODE.glob("*.py")) +
                [Path(__file__), DATA / "config.txt"])
     for path in sources:

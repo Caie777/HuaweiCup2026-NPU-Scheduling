@@ -10,8 +10,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from evaluation_adapter import atomic_json, plan_digest
-from official_input import resolve_official_root
+from common.evaluation import atomic_json, plan_digest
+from common.official_input import resolve_official_root
 
 OFFICIAL = None
 
@@ -69,7 +69,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--official-root", type=Path,
                         help="local contest attachment directory; alternatively set MATH_MODEL_OFFICIAL_ROOT")
-    parser.add_argument("--summary", required=True, type=Path)
+    parser.add_argument("--summary", required=True, type=Path,
+                        help="runner summary.json (not summary.csv)")
     parser.add_argument("--case", required=True, help="case_001 or 001")
     parser.add_argument("--problem", required=True, type=int, choices=(1, 2, 3))
     parser.add_argument("--cores", required=True, type=int)

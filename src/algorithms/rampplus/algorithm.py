@@ -10,9 +10,10 @@ import math
 import time
 from collections import defaultdict
 
-from aggregate import validate_partition
-from memory_risk import estimate_task, estimate_task_step1, index_compute_edges
-from ramp_dag import PROFILES, RAMPDAG, _Coarsener, quotient_graph, sha_plan
+from common.partition import validate_partition
+from common.memory import estimate_task, estimate_task_step1, index_compute_edges
+from algorithms.rampplus.dag import PROFILES, RAMPDAG, _Coarsener, sha_plan
+from common.partition import quotient_graph
 
 
 class RAMPPlus:
@@ -226,7 +227,7 @@ class RAMPPlus:
     def block_reopt_neighbors(self, chosen, official_result, *, problem,
                               settings, limit=3, time_budget=8.0):
         """Jointly reschedule a bounded two-core block of existing Subgraphs."""
-        from ramp_block import block_reopt_neighbors
+        from algorithms.rampplus.block import block_reopt_neighbors
         return block_reopt_neighbors(
             self, chosen, official_result, problem=problem, settings=settings,
             limit=limit, time_budget=time_budget)
@@ -337,7 +338,7 @@ class RAMPPlus:
             ranked = [self._rank(row) for row in proposals.values()]
             ranked.sort(key=lambda row: (row["risk_objective"], row["hash"]))
         else:
-            from scene_cost import score_plan
+            from common.scene_cost import score_plan
             ranked = list(proposals.values())
             for row in ranked:
                 row["scene_proxy"] = score_plan(
@@ -440,7 +441,7 @@ class RAMPPlus:
         be interpreted as a subgraph id. Existing split/merge constructors
         are reused; moves and reorders preserve the current partition.
         """
-        from scene_cost import score_plan
+        from common.scene_cost import score_plan
         feedback_started = time.monotonic()
         proxy_seconds = 0.0
 

@@ -14,10 +14,10 @@ import random
 import time
 from collections import defaultdict
 
-from aggregate import validate_partition
-from ojo_macro import macro_partitions
-from ramp_dag import quotient_graph
-from scene_cost import score_plan
+from common.partition import validate_partition
+from algorithms.ojomacro.macro import macro_partitions
+from common.partition import quotient_graph
+from common.scene_cost import score_plan
 
 
 def plan_hash(plan):
@@ -768,16 +768,6 @@ class OJOLNS:
                 "valid_candidates_per_second":valid_repairs/max(0.001,elapsed-construction_seconds)}
 
 
-def lower_bounds(graph, cores):
-    work = sum(graph.ops[o].get("cycles", 0) for o in graph.compute_ids)
-    path = max(graph.longest_path.values(), default=0)
-    pipe = max(graph.pipe_work.values(), default=0)
-    # DDR bound is a transparent traffic lower bound: each distinct original DDR
-    # boundary tensor is transferred once at configured bandwidth (no spill term).
-    ddr = sum(t.get("size", 0) for tid,t in graph.tensors.items() if t.get("pos") == "DDR" and
-              ((graph.tensor_producers[tid] & set(graph.compute_ids)) or (graph.tensor_consumers[tid] & set(graph.compute_ids))))
-    return {"compute_cores_bound": work/max(1,cores), "critical_path_bound": path,
-            "pipe_serial_bound": pipe, "ddr_bytes_lower_bound": ddr}
 
 
 def cpsat_rebuild(graph, fixed_groups, released_ops, cores, *, bandwidth, same_wait,

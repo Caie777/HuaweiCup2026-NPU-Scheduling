@@ -8,7 +8,6 @@ from __future__ import annotations
 
 from collections import defaultdict
 from functools import lru_cache
-from pathlib import Path
 import os
 import sys
 
@@ -102,10 +101,6 @@ def estimate_task(graph, members, capacity, order=None):
                      [graph.tensors[tid] for tid in touched], edges, local_order, capacity)
 
 
-def estimate_official_task_graph(task_graph, step1_order, capacity):
-    """Calibrate against official Step1 order on its expanded Task graph."""
-    return _simulate(task_graph["ops"], task_graph["tensors"],
-                     task_graph["edges"], step1_order, capacity)
 
 
 def index_compute_edges(graph):
@@ -122,7 +117,7 @@ def index_compute_edges(graph):
 
 @lru_cache(maxsize=1)
 def _official_step1():
-    from official_input import resolve_official_root
+    from common.official_input import resolve_official_root
     official = resolve_official_root(os.environ.get("MATH_MODEL_OFFICIAL_ROOT"))
     sys.path.insert(0, str(official / "code"))
     from schedule_step1 import step1_schedule

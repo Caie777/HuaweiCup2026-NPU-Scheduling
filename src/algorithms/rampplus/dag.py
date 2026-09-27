@@ -1,6 +1,6 @@
 """Deterministic resource-aware multilevel partitioning and scheduling.
 
-RAMP-DAG keeps the V1 natural-module partition as its starting level, explores
+RAMP-DAG keeps the shared natural-module partition as its starting level, explores
 several workload-independent coarsening profiles, and can split a coarse task
 at a topological cut during refinement. All cost estimates in this module are
 proxies; official problem-1 evaluation remains authoritative.
@@ -13,10 +13,10 @@ import json
 import math
 import time
 from bisect import bisect_left
-from collections import defaultdict, deque
+from collections import defaultdict
 
-from aggregate import validate_partition
-from aggregate_v2 import FastV1ModuleAggregator
+from common.partition import validate_partition, quotient_graph
+from common.module_seed import NaturalModuleAggregator
 
 
 PROFILES = {
@@ -41,30 +41,6 @@ def sha_plan(plan):
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()[:20]
 
 
-def quotient_graph(graph, groups):
-    owner = {op: i for i, group in enumerate(groups) for op in group}
-    succ = {i: set() for i in range(len(groups))}
-    pred = {i: set() for i in range(len(groups))}
-    for src in graph.compute_ids:
-        for dst in graph.compute_succ[src]:
-            a, b = owner[src], owner[dst]
-            if a != b:
-                succ[a].add(b)
-                pred[b].add(a)
-    indegree = {i: len(pred[i]) for i in pred}
-    ready = [i for i in indegree if indegree[i] == 0]
-    heapq.heapify(ready)
-    topo = []
-    while ready:
-        node = heapq.heappop(ready)
-        topo.append(node)
-        for child in sorted(succ[node]):
-            indegree[child] -= 1
-            if indegree[child] == 0:
-                heapq.heappush(ready, child)
-    if len(topo) != len(groups):
-        raise ValueError("聚合后的 Task 商图存在环")
-    return owner, succ, pred, topo
 
 
 class _Coarsener:
@@ -388,7 +364,7 @@ class RAMPDAG:
         self.ablations = dict(ablations or {})
         self.started = time.monotonic()
         phase_started = time.monotonic()
-        self.modules = FastV1ModuleAggregator(graph).run()
+        self.modules = NaturalModuleAggregator(graph).run()
         self.phase_seconds = {"natural_module_aggregation": time.monotonic() - phase_started}
         self.module_of = {op: m for m, group in enumerate(self.modules) for op in group}
         self.op_pos = {op: i for i, op in enumerate(graph.compute_order)}

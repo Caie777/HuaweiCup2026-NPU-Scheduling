@@ -10,8 +10,9 @@ import heapq
 import time
 from collections import defaultdict
 
-from ramp_dag import quotient_graph, sha_plan
-from scene_cost import score_plan
+from algorithms.rampplus.dag import sha_plan
+from common.partition import quotient_graph
+from common.scene_cost import score_plan
 
 
 def _acyclic_with_orders(successors, orders):

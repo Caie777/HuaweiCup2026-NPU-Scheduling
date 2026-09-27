@@ -10,13 +10,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from aggregate import validate_partition
-from aggregate_v2 import FastV1ModuleAggregator
-from aggregate_v2plus import V2PlusAggregator
-from graph_model import GraphModel
-from ojo_lns import OJOLNS
-from ramp_dag import quotient_graph
-from ramp_plus import RAMPPlus
+from common.partition import validate_partition
+from common.module_seed import NaturalModuleAggregator
+from algorithms.v2plus.algorithm import V2PlusAggregator
+from common.graph import GraphModel
+from algorithms.ojomacro.search import OJOLNS
+from common.partition import quotient_graph
+from algorithms.rampplus.algorithm import RAMPPlus
+from algorithms.routes import route_candidates
 from run_all_problems import checkpoint_summary, official_attempt_limit, unit_budget_seconds
 
 
@@ -51,7 +52,7 @@ def main():
     graph = synthetic_graph()
     common = {"bandwidth": 60, "same_wait": 100, "cross_wait": 200,
               "capacity": {"L1": 4096, "UB": 4096}}
-    modules = FastV1ModuleAggregator(graph, cache_bytes=8192).run()
+    modules = NaturalModuleAggregator(graph, cache_bytes=8192).run()
     groups, v2 = V2PlusAggregator(graph, modules, 2, **common).run()
     check_candidate(graph, {"groups": groups, "plan": v2["selected"]["plan"]})
     ramp = RAMPPlus(graph, 2, **common).initial_candidates(time_budget=2, limit=3)
@@ -61,6 +62,16 @@ def main():
                                           time_budget=2, multiscale=True, macro=True)
     assert ojo["candidates"]
     check_candidate(graph, ojo["candidates"][0])
+
+    scene_settings = {"bandwidth": common["bandwidth"],
+                      "capacity": common["capacity"],
+                      "scene_a": {"task_same_core_wait_cycles": common["same_wait"],
+                                  "task_cross_core_wait_cycles": common["cross_wait"]}}
+    for algorithm in ("V2plus", "RAMPplus", "OJOmacro"):
+        candidates = route_candidates(graph, algorithm, 1, 2, scene_settings,
+                                      limit=3, search_seconds=2)
+        assert candidates, algorithm
+        check_candidate(graph, candidates[0])
 
     args = SimpleNamespace(per_case_seconds=None, per_eval_seconds=120,
                            max_candidates=0, profile="overnight",

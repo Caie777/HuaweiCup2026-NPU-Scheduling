@@ -1,4 +1,4 @@
-"""V2+: deterministic two-level aggregation with Step1-aware memory risk.
+"""V2plus: deterministic two-level aggregation with Step1-aware memory risk.
 
 This route decides a small set of Task partitions before multi-core scheduling.
 It deliberately does not perform schedule-driven merge/move/reorder rounds.
@@ -9,10 +9,10 @@ import math
 import time
 from collections import defaultdict
 
-from aggregate import validate_partition
-from aggregate_v2 import ResourceAwareAggregator
-from memory_risk import estimate_task, estimate_task_step1, index_compute_edges
-from schedule import make_plan
+from common.partition import validate_partition
+from algorithms.v2plus.resource_partition import ResourceAwareAggregator
+from common.memory import estimate_task, estimate_task_step1, index_compute_edges
+from common.schedule import make_plan
 
 
 class V2PlusAggregator(ResourceAwareAggregator):

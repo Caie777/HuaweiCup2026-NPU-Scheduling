@@ -8,17 +8,17 @@
 
 ### V2plus
 
-从自然模块生成不同粒度的 Task 分区，按 Pipe 负载、Tensor 亲和与拓扑连续性构造候选，再用时间、搬运和 L1/UB 风险代理排序。侧重结构化候选生成。[代码](src/aggregate_v2plus.py) · [说明](docs/V2plus_算法设计.md)
+从自然模块生成不同粒度的 Task 分区，按 Pipe 负载、Tensor 亲和与拓扑连续性构造候选，再用时间、搬运和 L1/UB 风险代理排序。侧重结构化候选生成。[代码](src/algorithms/v2plus/algorithm.py) · [说明](docs/V2plus_算法设计.md)
 
 ### RAMPplus
 
-在自然模块 DAG 上多级粗化，并根据官方验证方案的时间线尝试 split、merge、move、reorder 邻域。侧重模块层级搜索与评估反馈。[代码](src/ramp_plus.py) · [说明](docs/RAMPplus_算法设计.md)
+在自然模块 DAG 上多级粗化，并根据官方验证方案的时间线尝试 split、merge、move、reorder 邻域。侧重模块层级搜索与评估反馈。[代码](src/algorithms/rampplus/algorithm.py) · [说明](docs/RAMPplus_算法设计.md)
 
 ### OJOmacro
 
-从原始 Op 的依赖和 Tensor 关系出发，组合多尺度分区、结构性 macro 候选与 Op 级局部搜索；对已验证方案继续生成邻域，并按场景筛选候选。侧重原始 Op 粒度的切图与调度联合改进。[搜索代码](src/ojo_lns.py) · [macro 候选](src/ojo_macro.py) · [说明](docs/OJOmacro.md)
+从原始 Op 的依赖和 Tensor 关系出发，组合多尺度分区、结构性 macro 候选与 Op 级局部搜索；对已验证方案继续生成邻域，并按场景筛选候选。侧重原始 Op 粒度的切图与调度联合改进。[搜索代码](src/algorithms/ojomacro/search.py) · [macro 候选](src/algorithms/ojomacro/macro.py) · [说明](docs/OJOmacro.md)
 
-三条路线共用 [运行入口](scripts/run_all_problems.py)及必要的图解析、排程和评估适配模块，均支持 P1–P3。
+三条路线共用 [运行入口](scripts/run_all_problems.py)及必要的图解析、排程和评估适配模块，均支持 P1–P3。模块职责见 [代码结构](docs/ARCHITECTURE.md)。
 
 ## 实验结果
 
@@ -76,7 +76,9 @@ python scripts/run_all_problems.py --official-root "/path/to/official-attachment
 
 ```text
 .
-├── src/       # 三条算法及共用模块
+├── src/
+│   ├── algorithms/  # V2plus、RAMPplus、OJOmacro 与统一路由
+│   └── common/      # 图、分区、排程、内存、官方评估适配
 ├── scripts/   # 运行、已验证方案导出、合成图检查
 ├── docs/      # 算法说明
 ├── results/   # 脱敏实验摘要与统计口径
