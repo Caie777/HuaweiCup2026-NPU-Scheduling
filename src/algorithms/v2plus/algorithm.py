@@ -13,6 +13,7 @@ from common.partition import validate_partition
 from algorithms.v2plus.resource_partition import ResourceAwareAggregator
 from common.memory import estimate_task, estimate_task_step1, index_compute_edges
 from common.schedule import make_plan
+from common.module_seed import NaturalModuleAggregator
 
 
 class V2PlusAggregator(ResourceAwareAggregator):
@@ -193,3 +194,15 @@ class V2PlusAggregator(ResourceAwareAggregator):
                                   "failed_candidates": [r for r in scored if "error" in r],
                                   "candidate_count": len(scored),
                                   "algorithm_seconds": time.monotonic() - started}
+
+
+def construct_rows(graph, cores, settings, common):
+    rows = []
+    modules = NaturalModuleAggregator(
+        graph, cache_bytes=sum(settings["capacity"].values())).run()
+    solved = V2PlusAggregator(graph, modules, cores, **common).run()[1]
+    for item in solved["ranked_candidates"]:
+        rows.append({"plan": item["plan"], "groups": item["groups"],
+                     "label": item["source"], "source": "V2plus",
+                     "search_stage": "constructor"})
+    return rows

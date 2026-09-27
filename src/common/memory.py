@@ -117,7 +117,7 @@ def index_compute_edges(graph):
 
 @lru_cache(maxsize=1)
 def _official_step1():
-    from common.official_input import resolve_official_root
+    from common.evaluation import resolve_official_root
     official = resolve_official_root(os.environ.get("MATH_MODEL_OFFICIAL_ROOT"))
     sys.path.insert(0, str(official / "code"))
     from schedule_step1 import step1_schedule

@@ -8,17 +8,15 @@
 
 | 目录 / 模块 | 职责 |
 | --- | --- |
-| `algorithms/v2plus/candidates.py` | 从共享自然模块构造 V2plus 的候选并传给统一路由。 |
 | `algorithms/v2plus/resource_partition.py` | V2plus 的资源感知 Task 分区、拓扑回退与代理打分基础。 |
-| `algorithms/v2plus/algorithm.py` | V2plus 的多粒度候选、内存风险排序与计划选择。 |
-| `algorithms/rampplus/candidates.py` | RAMPplus 初始候选、官方反馈及 Block 候选的接口。 |
+| `algorithms/v2plus/algorithm.py` | V2plus 的多粒度候选、内存风险排序、计划选择与候选构造接口。 |
 | `algorithms/rampplus/dag.py` | 多级模块粗化、分区细化和 RAMP DAG 搜索。 |
-| `algorithms/rampplus/algorithm.py` | RAMPplus 候选排序与 split/merge/move/reorder 反馈。 |
+| `algorithms/rampplus/algorithm.py` | RAMPplus 候选排序、split/merge/move/reorder 反馈及初始、反馈、Block 候选接口。 |
 | `algorithms/rampplus/block.py` | 可选的局部 Block 重优化邻域。 |
 | `algorithms/ojomacro/candidates.py` | OJOmacro 构造、macro 组合选择与官方反馈候选接口。 |
 | `algorithms/ojomacro/search.py` | 原始 Op 粒度的多尺度搜索、修复、排程邻域及可选 CP-SAT。 |
 | `algorithms/ojomacro/macro.py` | 结构性 macro 分区候选。 |
-| `algorithms/routes.py` | 三路线的统一分发、场景选择与反馈候选去重；不实现各路线的搜索器。 |
+| `algorithms/routes.py` | 三路线的统一分发、场景选择、反馈候选去重、安全初始 Plan 与跨路线候选排名；不实现各路线的搜索器。 |
 
 ## 共享模块
 
@@ -30,9 +28,7 @@
 | `common/schedule.py` | 通用 Task 多核排程及 Plan 构造。 |
 | `common/memory.py` | L1/UB 活跃内存风险及官方 Step1 顺序估计。 |
 | `common/scene_cost.py` | 三个硬件场景的候选代理成本。 |
-| `common/candidates.py` | 安全初始 Plan 与跨路线候选排名。 |
-| `common/official_input.py` | 解析 `--official-root` / 环境变量，定位用户本地附件。 |
-| `common/evaluation.py` | 调用本地官方评估器、Plan 摘要与原子写入。 |
+| `common/evaluation.py` | 解析 `--official-root` / 环境变量，定位本地附件，并调用官方评估器、生成 Plan 摘要与原子写入。 |
 | `common/feedback.py` | 官方反馈阶段的通用预算与调用编排。 |
 
 `scripts/export_verified_plan.py` 导出已验证的最佳 Plan；`scripts/smoke_test.py` 用合成图检查三条路线、统一分发和超时检查点。官方附件始终放在仓库外。

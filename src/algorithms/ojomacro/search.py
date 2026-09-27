@@ -14,9 +14,8 @@ import random
 import time
 from collections import defaultdict
 
-from common.partition import validate_partition
+from common.partition import quotient_graph, validate_partition
 from algorithms.ojomacro.macro import macro_partitions
-from common.partition import quotient_graph
 from common.scene_cost import score_plan
 
 

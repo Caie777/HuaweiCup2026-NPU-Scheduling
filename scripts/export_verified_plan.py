@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from common.evaluation import atomic_json, plan_digest
-from common.official_input import resolve_official_root
+from common.evaluation import resolve_official_root
 
 OFFICIAL = None
 

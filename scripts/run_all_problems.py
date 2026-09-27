@@ -25,13 +25,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from common.evaluation import (atomic_json, evaluate_official, plan_digest,
-                                replace_with_retry)
+                                replace_with_retry, resolve_official_root)
 from common.feedback import run_feedback_stages
 from common.graph import GraphModel
-from algorithms.routes import feedback_candidates, route_candidates
-from common.candidates import safe_initial_plan
-from algorithms.rampplus.candidates import ramp_block_candidates
-from common.official_input import resolve_official_root
+from algorithms.routes import feedback_candidates, route_candidates, safe_initial_plan
+from algorithms.rampplus.algorithm import ramp_block_candidates
 from common.scene_cost import score_plan
 
 OFFICIAL = DATA = CODE = None
