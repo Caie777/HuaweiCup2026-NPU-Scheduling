@@ -1,6 +1,6 @@
 # 2026 华为杯 A 题：多核 NPU 切图与调度
 
-本仓库收录本人在 **2026 年中国研究生数学建模竞赛（华为杯）A 题**中开发的三条算法路线：**V2plus、RAMPplus、OJOmacro**。参赛队友另有其他算法；论文由团队合作完成，最终根据实验比较采用 OJOmacro 作为主要算法。
+本仓库收录本人在 **2026 年中国研究生数学建模竞赛（华为杯）A 题**中开发的三条算法路线：**V2plus、RAMPplus、OJOmacro**。参赛队友也独立开发了其他算法，团队通过实验比较最终选定 OJOmacro 作为主要方案，并合作完成参赛论文。
 
 赛题要求对通用 NPU 计算图进行多核切图与 Task 调度，在满足依赖和存储约束下缩短总执行时间（Makespan）。切分与排程需要兼顾计算并行、DDR 搬运、跨核同步及缓存复用。下文将三个硬件场景记为 P1、P2、P3。
 
@@ -83,5 +83,5 @@ python scripts/run_all_problems.py --official-root "/path/to/official-attachment
 └── figures/   # OJOmacro 最终实验图
 ```
 
-公开许可待团队确认，暂未添加 LICENSE。
+本项目采用 [MIT License](LICENSE)。实验数据来源与统计口径见 [METHODS.md](results/METHODS.md)。
 
