@@ -1,0 +1,2 @@
+# Python 3.11+; no mandatory third-party packages.
+# Optional for the OJO CP-SAT experiment: ortools

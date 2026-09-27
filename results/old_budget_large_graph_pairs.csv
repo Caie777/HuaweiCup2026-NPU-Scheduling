@@ -1,0 +1,7 @@
+group,compute_op_min,case_count,problem,core_counts,opponent,paired_valid_n,ojo_lower_makespan_n,tie_n,opponent_lower_makespan_n
+largest_25_by_compute_ops,7360,25,P1,2-5,V2plus,59,36,2,21
+largest_25_by_compute_ops,7360,25,P1,2-5,RAMPplus,58,41,1,16
+largest_25_by_compute_ops,7360,25,P2,2-5,V2plus,71,51,5,15
+largest_25_by_compute_ops,7360,25,P2,2-5,RAMPplus,71,46,7,18
+largest_25_by_compute_ops,7360,25,P3,2-5,V2plus,72,52,5,15
+largest_25_by_compute_ops,7360,25,P3,2-5,RAMPplus,72,49,6,17

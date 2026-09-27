@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="390" viewBox="0 0 1080 390" role="img">
+<title>OJOmacro - 7-minute budget</title>
+<rect width="1080" height="390" fill="#ffffff"/>
+<text x="45" y="32" fill="#111827" font-family="Arial,sans-serif" font-size="21" font-weight="700">OJOmacro - 7-minute budget</text>
+<text x="57" y="56" fill="#374151" font-family="Arial,sans-serif" font-size="15" font-weight="700">P1</text>
+<line x1="57" y1="275.0" x2="307" y2="275.0" stroke="#e5e7eb"/>
+<text x="47" y="279.0" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">0</text>
+<line x1="57" y1="232.8" x2="307" y2="232.8" stroke="#e5e7eb"/>
+<text x="47" y="236.8" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">1</text>
+<line x1="57" y1="190.6" x2="307" y2="190.6" stroke="#e5e7eb"/>
+<text x="47" y="194.6" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">2</text>
+<line x1="57" y1="148.4" x2="307" y2="148.4" stroke="#e5e7eb"/>
+<text x="47" y="152.4" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">3</text>
+<line x1="57" y1="106.2" x2="307" y2="106.2" stroke="#e5e7eb"/>
+<text x="47" y="110.2" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">4</text>
+<line x1="57" y1="64.0" x2="307" y2="64.0" stroke="#e5e7eb"/>
+<text x="47" y="68.0" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">5</text>
+<text x="57.0" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">2</text>
+<text x="140.3" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">3</text>
+<text x="223.7" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">4</text>
+<text x="307.0" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">5</text>
+<path d="M57.0,198.9 L140.3,171.2 L223.7,147.7 L307.0,126.9" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<circle cx="57.0" cy="198.9" r="4" fill="#ea580c"><title>P1, 2 cores, OJOmacro: 1.804x, n=100</title></circle>
+<circle cx="140.3" cy="171.2" r="4" fill="#ea580c"><title>P1, 3 cores, OJOmacro: 2.459x, n=100</title></circle>
+<circle cx="223.7" cy="147.7" r="4" fill="#ea580c"><title>P1, 4 cores, OJOmacro: 3.016x, n=100</title></circle>
+<circle cx="307.0" cy="126.9" r="4" fill="#ea580c"><title>P1, 5 cores, OJOmacro: 3.509x, n=100</title></circle>
+<text x="402" y="56" fill="#374151" font-family="Arial,sans-serif" font-size="15" font-weight="700">P2</text>
+<line x1="402" y1="275.0" x2="652" y2="275.0" stroke="#e5e7eb"/>
+<text x="392" y="279.0" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">0</text>
+<line x1="402" y1="232.8" x2="652" y2="232.8" stroke="#e5e7eb"/>
+<text x="392" y="236.8" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">1</text>
+<line x1="402" y1="190.6" x2="652" y2="190.6" stroke="#e5e7eb"/>
+<text x="392" y="194.6" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">2</text>
+<line x1="402" y1="148.4" x2="652" y2="148.4" stroke="#e5e7eb"/>
+<text x="392" y="152.4" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">3</text>
+<line x1="402" y1="106.2" x2="652" y2="106.2" stroke="#e5e7eb"/>
+<text x="392" y="110.2" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">4</text>
+<line x1="402" y1="64.0" x2="652" y2="64.0" stroke="#e5e7eb"/>
+<text x="392" y="68.0" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">5</text>
+<text x="402.0" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">2</text>
+<text x="485.3" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">3</text>
+<text x="568.7" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">4</text>
+<text x="652.0" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">5</text>
+<path d="M402.0,189.5 L485.3,157.2 L568.7,128.4 L652.0,104.3" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<circle cx="402.0" cy="189.5" r="4" fill="#ea580c"><title>P2, 2 cores, OJOmacro: 2.025x, n=100</title></circle>
+<circle cx="485.3" cy="157.2" r="4" fill="#ea580c"><title>P2, 3 cores, OJOmacro: 2.792x, n=100</title></circle>
+<circle cx="568.7" cy="128.4" r="4" fill="#ea580c"><title>P2, 4 cores, OJOmacro: 3.473x, n=100</title></circle>
+<circle cx="652.0" cy="104.3" r="4" fill="#ea580c"><title>P2, 5 cores, OJOmacro: 4.046x, n=100</title></circle>
+<text x="747" y="56" fill="#374151" font-family="Arial,sans-serif" font-size="15" font-weight="700">P3</text>
+<line x1="747" y1="275.0" x2="997" y2="275.0" stroke="#e5e7eb"/>
+<text x="737" y="279.0" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">0</text>
+<line x1="747" y1="232.8" x2="997" y2="232.8" stroke="#e5e7eb"/>
+<text x="737" y="236.8" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">1</text>
+<line x1="747" y1="190.6" x2="997" y2="190.6" stroke="#e5e7eb"/>
+<text x="737" y="194.6" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">2</text>
+<line x1="747" y1="148.4" x2="997" y2="148.4" stroke="#e5e7eb"/>
+<text x="737" y="152.4" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">3</text>
+<line x1="747" y1="106.2" x2="997" y2="106.2" stroke="#e5e7eb"/>
+<text x="737" y="110.2" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">4</text>
+<line x1="747" y1="64.0" x2="997" y2="64.0" stroke="#e5e7eb"/>
+<text x="737" y="68.0" text-anchor="end" fill="#6b7280" font-family="Arial,sans-serif" font-size="11">5</text>
+<text x="747.0" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">2</text>
+<text x="830.3" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">3</text>
+<text x="913.7" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">4</text>
+<text x="997.0" y="295" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">5</text>
+<path d="M747.0,189.2 L830.3,155.1 L913.7,124.5 L997.0,98.9" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+<circle cx="747.0" cy="189.2" r="4" fill="#ea580c"><title>P3, 2 cores, OJOmacro: 2.034x, n=100</title></circle>
+<circle cx="830.3" cy="155.1" r="4" fill="#ea580c"><title>P3, 3 cores, OJOmacro: 2.842x, n=100</title></circle>
+<circle cx="913.7" cy="124.5" r="4" fill="#ea580c"><title>P3, 4 cores, OJOmacro: 3.566x, n=100</title></circle>
+<circle cx="997.0" cy="98.9" r="4" fill="#ea580c"><title>P3, 5 cores, OJOmacro: 4.172x, n=100</title></circle>
+<text x="24" y="183" transform="rotate(-90 24 183)" fill="#4b5563" font-family="Arial,sans-serif" font-size="13">Mean speedup (x)</text>
+<text x="540" y="366" text-anchor="middle" fill="#6b7280" font-family="Arial,sans-serif" font-size="12">OJOmacro: 420 s per unit, 100 official cases per point; separate experiment setting.</text>
+</svg>
